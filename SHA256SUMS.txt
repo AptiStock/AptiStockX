@@ -1,4 +1,4 @@
-9b101dc9e61f0e4b6a5321edbfaf0520739fdb5ebfd6774b808248d6e30e7484  download/3_0/AptiStockX-3.0-macOS-universal.dmg
-f630413ebd99075a2c267626736ba4872d25647eb23939316d70c0ccb2de248f  download/3_0/AptiStockX-3.0-Windows-x64-Setup.exe
-42bcb0e66b7f6d4881c26ca005ad83ea267c35526b2c54472933e7ef4217a5d0  download/3_0/AptiStockX-3.0-Linux-x86_64.AppImage
-a4317f0916012dd4e73c41ae31062d1b4f760a726610eb444de6afed88e6e555  download/3_0/AptiStockX_3.0_amd64.deb
+9b101dc9e61f0e4b6a5321edbfaf0520739fdb5ebfd6774b808248d6e30e7484  AptiStockX-3.0-macOS-universal.dmg
+f630413ebd99075a2c267626736ba4872d25647eb23939316d70c0ccb2de248f  AptiStockX-3.0-Windows-x64-Setup.exe
+42bcb0e66b7f6d4881c26ca005ad83ea267c35526b2c54472933e7ef4217a5d0  AptiStockX-3.0-Linux-x86_64.AppImage
+a4317f0916012dd4e73c41ae31062d1b4f760a726610eb444de6afed88e6e555  AptiStockX_3.0_amd64.deb
