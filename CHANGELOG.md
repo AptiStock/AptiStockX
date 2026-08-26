@@ -1,5 +1,20 @@
 # Changelog
 
+## AptiStockX 3.1.0
+
+Released 2026-08-25.
+
+- Added a searchable global stock symbol catalog and dockable Global Market Stock Viewer.
+- Added market-group selection, offline search, instrument filters, and chart/download workflows for supported global markets.
+- Added verified server-side catalog updates without requiring an application reinstall.
+- Added Trend Ray, Extended Line, Info Line, and Quadrant Lines.
+- Added Duplicate Selected Line Study, Keep Drawing Mode, and optional Fibonacci extension levels.
+- Fixed forced catalog refreshes so the latest server file bypasses caches and retains the compressed bytes required for verification.
+- Fixed latest-close guides on linear and logarithmic charts.
+- Fixed phantom chart marks in future chart space beyond the final real data bar.
+- Removed the obsolete Linux `libsecret-tools` and `secret-tool` requirement.
+- Published signed/notarized macOS, Windows x64, Linux AppImage, and Debian packages.
+
 ## AptiStockX 3.0
 
 Initial public AptiStockX 3.0 release.
