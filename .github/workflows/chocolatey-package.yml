@@ -2,6 +2,12 @@ name: Validate Chocolatey package
 
 on:
   workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the validated package to Chocolatey Community
+        required: true
+        default: false
+        type: boolean
   push:
     paths:
       - "chocolatey/**"
@@ -52,3 +58,25 @@ jobs:
           name: aptistockx-chocolatey-3.1.0
           path: artifacts/aptistockx.3.1.0.nupkg
           if-no-files-found: error
+
+  publish:
+    needs: build-and-test
+    if: github.event_name == 'workflow_dispatch' && inputs.publish
+    runs-on: windows-latest
+    environment: chocolatey-production
+    steps:
+      - name: Download validated Chocolatey package
+        uses: actions/download-artifact@v4
+        with:
+          name: aptistockx-chocolatey-3.1.0
+          path: artifacts
+
+      - name: Publish to Chocolatey Community
+        shell: pwsh
+        env:
+          CHOCOLATEY_API_KEY: ${{ secrets.CHOCOLATEY_API_KEY }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:CHOCOLATEY_API_KEY)) {
+            throw 'The CHOCOLATEY_API_KEY secret is not configured in the chocolatey-production environment.'
+          }
+          choco push .\artifacts\aptistockx.3.1.0.nupkg --source https://push.chocolatey.org/ --api-key $env:CHOCOLATEY_API_KEY
