@@ -1,0 +1,54 @@
+name: Validate Chocolatey package
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "chocolatey/**"
+      - ".github/workflows/chocolatey-package.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out packaging source
+        uses: actions/checkout@v4
+
+      - name: Build Chocolatey package
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Path artifacts -Force | Out-Null
+          choco pack .\chocolatey\aptistockx.nuspec --output-directory .\artifacts
+
+      - name: Install package locally
+        shell: pwsh
+        run: |
+          choco install aptistockx --version 3.1.0 --source "$PWD\artifacts" --yes --accept-license --no-progress
+          $key = Get-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\{E4018788-67DA-4D2F-BE02-7D5F5081C54A}_is1' -ErrorAction Stop
+          if ($key.DisplayVersion -ne '3.1.0') {
+            throw "Unexpected installed version: $($key.DisplayVersion)"
+          }
+          $exe = Join-Path $env:LOCALAPPDATA 'Programs\AptiStockX\AptiStockX.exe'
+          if (-not (Test-Path -LiteralPath $exe -PathType Leaf)) {
+            throw "Installed AptiStockX executable not found: $exe"
+          }
+
+      - name: Uninstall package locally
+        shell: pwsh
+        run: |
+          choco uninstall aptistockx --yes --no-progress
+          $keyPath = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\{E4018788-67DA-4D2F-BE02-7D5F5081C54A}_is1'
+          if (Test-Path -LiteralPath $keyPath) {
+            throw 'AptiStockX uninstall registration still exists after uninstall.'
+          }
+
+      - name: Upload Chocolatey package
+        uses: actions/upload-artifact@v4
+        with:
+          name: aptistockx-chocolatey-3.1.0
+          path: artifacts/aptistockx.3.1.0.nupkg
+          if-no-files-found: error
