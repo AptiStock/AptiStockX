@@ -1,0 +1,21 @@
+VERIFICATION
+
+The Chocolatey package downloads the official AptiStockX installer at runtime.
+
+Installer:
+https://downloads.aptistock.com/3.1/AptiStockX-3.1.0-Windows-x64-Setup.exe
+
+SHA-256:
+f496d7e587579fa3c7e863e35e97fd5ed87401471020cc8bd52b817adf3e356a
+
+Verification steps:
+
+1. Download the installer from the URL above.
+2. Run this command in PowerShell:
+
+   Get-FileHash .\AptiStockX-3.1.0-Windows-x64-Setup.exe -Algorithm SHA256
+
+3. Confirm the resulting hash matches the SHA-256 value above.
+
+The installer is published by AptiStock LLC. The same checksum is published at:
+https://aptistock.com/download

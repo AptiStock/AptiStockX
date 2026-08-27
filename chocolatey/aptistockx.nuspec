@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>aptistockx</id>
+    <version>3.1.0</version>
+    <title>AptiStockX</title>
+    <authors>AptiStock LLC</authors>
+    <owners>AptiStock LLC</owners>
+    <projectUrl>https://aptistock.com/</projectUrl>
+    <iconUrl>https://aptistock.com/static/assets/aptistock-icon-256.png</iconUrl>
+    <licenseUrl>https://aptistock.com/legal/terms</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <packageSourceUrl>https://github.com/AptiStock/AptiStockX/tree/main/chocolatey</packageSourceUrl>
+    <docsUrl>https://aptistock.com/docs</docsUrl>
+    <bugTrackerUrl>https://github.com/AptiStock/AptiStockX/issues</bugTrackerUrl>
+    <summary>Local-first desktop stock charting and portfolio research software.</summary>
+    <description><![CDATA[
+AptiStockX is a native, local-first desktop application for stock charting and portfolio research.
+
+Features include:
+
+* Searchable global stock symbol catalog and Global Market Stock Viewer
+* Candlestick and OHLC charts with technical indicators
+* Drawing studies, watchlists, workspaces, and multi-monitor workflows
+* Downloadable market data through user-configured providers
+* Local storage for chart files, workspaces, watchlists, and downloaded data
+* Basic, 7-day Pro Trial, and paid Pro license modes
+
+AptiStockX Basic is free to use. Pro features require a trial or a paid AptiStockX Pro license. AptiStockX is research and analysis software and does not provide financial advice, brokerage, or trade execution services.
+
+The installer performs a per-user installation under the current user's LocalAppData folder. Silent uninstall preserves downloaded data, charts, workspaces, watchlists, custom indicators, settings, credentials, provider configuration, and installed license data.
+    ]]></description>
+    <releaseNotes><![CDATA[
+AptiStockX 3.1.0 adds global market discovery, a searchable symbol catalog, verified catalog updates, new drawing and measurement tools, and chart-rendering fixes. See https://aptistock.com/changelog for the complete release notes.
+    ]]></releaseNotes>
+    <copyright>Copyright (c) 2026 AptiStock LLC</copyright>
+    <tags>aptistockx stocks stock-charting technical-analysis finance portfolio desktop global-markets</tags>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>
